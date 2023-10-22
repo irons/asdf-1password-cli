@@ -24,10 +24,13 @@ jobs:
       - name: Move 1password-cli plugin to plugins dir
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
+          pwd
+          ls -la
           cp -R 1password-cli ${HOME}/.asdf/plugins/
       - name:
         run: |
           pip3 install semver
+          pushd asdf-1password-cli
           ls -la .. || true
           ls -la .github || true
           ls -la .github/workflows || true
