@@ -47,8 +47,8 @@ for v in versions:
   except subprocess.CalledProcessError as error:
     if result.returncode != 0:
       print(f"Version {v} failed to install")
-      print(f"stdout: '{result.stdout}'")
-      print(f"stderr: '{result.stderr}'")
+      print(f"stdout: '{result.stdout.strip()}'")
+      print(f"stderr: '{result.stderr.strip()}'")
       failures.append(v)
       continue
 
