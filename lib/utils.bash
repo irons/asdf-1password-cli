@@ -58,10 +58,22 @@ download_release() {
   url=$(echo "${url}" | grep "${filter_platform}")
 
   # Limit to architecture ${arch}
+  saved=$url
   url=$(echo "${url}" | grep "${arch}")
+  if [ "${url}" == "" ] && [ "${platform}" == 'darwin' ]; then
+    echo "No native arch found, trying fallback to amd64"
+    arch="amd64"
+    url=$(echo "${saved}" | grep "${arch}")
+  fi
 
   # Limit to trailing extension \.${ext} (not /${ext}/ in path)
+  saved=$url
   url=$(echo "${url}" | grep "\.${ext}")
+  if [ "${url}" == "" ] && [ "${platform}" == 'darwin' ]; then
+    echo "No pkg extension found, trying fallback to zip"
+    ext="zip"
+    url=$(echo "${saved}" | grep "\.${ext}")
+  fi
 
   # Ensure each link is on its own line
   # shellcheck disable=SC2001 # (bash 3.2.x parameter expansion can't handle newlines)
