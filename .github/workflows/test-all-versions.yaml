@@ -28,4 +28,4 @@ jobs:
       - name:
         run: |
           pip3 install semver
-          python test-all-versions.py
+          python .github/workflows/test-all-versions.py
