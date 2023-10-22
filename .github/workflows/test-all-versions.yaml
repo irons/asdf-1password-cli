@@ -6,6 +6,7 @@ on:
 
 jobs:
   plugin_test:
+    if: always()
     name: asdf plugin test
     strategy:
       matrix:
@@ -25,7 +26,6 @@ jobs:
           mkdir -p ${HOME}/.asdf/plugins/
           cp -R 1password-cli ${HOME}/.asdf/plugins/
       - name: Test all versions
-        if: always()
         run: |
           pip3 install semver
           cd 1password-cli
