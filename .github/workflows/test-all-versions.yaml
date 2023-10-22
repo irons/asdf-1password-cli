@@ -24,8 +24,8 @@ jobs:
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
           cp -R 1password-cli ${HOME}/.asdf/plugins/
-      - name:
-        if: '!cancelled()'
+      - name: Test all versions
+        if: always()
         run: |
           pip3 install semver
           cd 1password-cli

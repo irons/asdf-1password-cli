@@ -37,7 +37,6 @@ for v in versions:
     result.check_returncode()
 
     if re.search(v, result.stdout):
-      print("yay")
       successes.append(v)
       continue
 
