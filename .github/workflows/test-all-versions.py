@@ -19,8 +19,6 @@ oldest_acceptable = semver.Version.parse("0.5.5")
 versions = [version for version in versions if semver.Version.parse(version) >= oldest_acceptable]
 print(f"{len(versions)} plausible versions found")
 
-versions = ['0.5.4', '1.11.0', '2.21.0']
-
 successes = []
 failures = []
 
