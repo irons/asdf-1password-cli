@@ -7,6 +7,7 @@ on:
 jobs:
   plugin_test:
     name: asdf plugin test
+    if: always()
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
