@@ -6,7 +6,6 @@ on:
 
 jobs:
   plugin_test:
-    if: always()
     name: asdf plugin test
     strategy:
       matrix:
@@ -14,21 +13,23 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: asdf_plugin_test
+        if: always()
         uses: asdf-vm/actions/plugin-test@v2
         with:
           command: op --version
       - name: Checkout code
+        if: always()
         uses: actions/checkout@v4
         with:
           path: 1password-cli
       - name: Move 1password-cli plugin to plugins dir
+        if: always()
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
           cp -R 1password-cli ${HOME}/.asdf/plugins/
       - name: Test all versions
+        if: always()
         run: |
           pip3 install semver
           cd 1password-cli
-          python --version
-          python3 --version
           python3 .github/workflows/test-all-versions.py
