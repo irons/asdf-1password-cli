@@ -29,4 +29,6 @@ jobs:
         run: |
           pip3 install semver
           cd 1password-cli
-          python .github/workflows/test-all-versions.py
+          python --version
+          python3 --version
+          python3 .github/workflows/test-all-versions.py
