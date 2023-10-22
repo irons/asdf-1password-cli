@@ -7,7 +7,6 @@ on:
 jobs:
   plugin_test:
     name: asdf plugin test
-    if: '!cancelled()'
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest]
@@ -24,14 +23,10 @@ jobs:
       - name: Move 1password-cli plugin to plugins dir
         run: |
           mkdir -p ${HOME}/.asdf/plugins/
-          pwd
-          ls -la
           cp -R 1password-cli ${HOME}/.asdf/plugins/
       - name:
+        if: '!cancelled()'
         run: |
           pip3 install semver
-          pushd 1password-cli || true
-          ls -la .. || true
-          ls -la .github || true
-          ls -la .github/workflows || true
+          cd 1password-cli
           python .github/workflows/test-all-versions.py
