@@ -30,7 +30,7 @@ jobs:
       - name:
         run: |
           pip3 install semver
-          pushd asdf-1password-cli
+          pushd 1password-cli || true
           ls -la .. || true
           ls -la .github || true
           ls -la .github/workflows || true
